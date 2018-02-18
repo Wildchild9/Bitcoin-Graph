@@ -6,10 +6,10 @@ This app finds takes the current bitcoin price and the bitcoin prices from the p
 <img width="565" alt="data for past week" src="https://user-images.githubusercontent.com/35314567/36348350-9ff53a60-143b-11e8-99d5-ea952eaf5c5e.png">
 
 ## Color Scheme
-- ![#00FA92](https://placehold.it/15/00FA92/000000?text=+)  Mint  `#00FA92 (0,250,146)`
-- ![#00FA92](https://placehold.it/15/00FA92/000000?text=+)  Strawberry  `#FF2F92 ((255,47,146))`
-- ![#00FA92](https://placehold.it/15/00FA92/000000?text=+)  Blackberry  `#03001B (3,0,27)`
-- ![#FFFFFF](https://placehold.it/15/FFFFFF/000000?text=+)  White  `#FFFFFF (255,255,255)`
+![#00FA92](https://placehold.it/15/00FA92/000000?text=)  Mint  `#00FA92 (0,250,146)`
+![#FF2F92](https://placehold.it/15/FF2F92/000000?text=)  Strawberry  `#FF2F92 ((255,47,146))`
+![#03001B](https://placehold.it/15/03001B/000000?text=)  Blackberry  `#03001B (3,0,27)`
+![#FFFFFF](https://placehold.it/15/FFFFFF/000000?text=)  White  `#FFFFFF (255,255,255)`
 
 ## Notices
 ### Pods Used:
