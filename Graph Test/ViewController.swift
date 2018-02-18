@@ -16,7 +16,9 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
     
 
     let dates = Dates()
-    let baseURL = "https://api.coindesk.com/v1/bpi/historical/close.json?start=2010-07-17&end="
+    let baseURL = "https://api.coindesk.com/v1/bpi/historical/close.json?start="
+    let midURL = "&end="
+    
     let format = DateFormatter()
 //    var randomNumbers : [Double] = []
     var numberOfDates : Int = 0
@@ -34,78 +36,139 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
     var line9 : Double = 0
     var line10 : Double = 0
     var referenceLinesArray : [Double] = []
-
+    let yesterday = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+    let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+    let weekAgoDate = Calendar.current.date(byAdding: .day, value: -6, to: Date())
+    var priceNow : Double = 0
+    
+    var quarter1 : Double = 0
+    var half : Double = 0
+    var quarter3 : Double = 0
+    var whole : Double = 0
+    
     
     
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var myGraph: ScrollableGraphView!
+    @IBOutlet weak var stack: UIStackView!
+    @IBOutlet weak var date1: UILabel!
+    @IBOutlet weak var date2: UILabel!
+    @IBOutlet weak var date3: UILabel!
+    @IBOutlet weak var date4: UILabel!
+    @IBOutlet weak var date5: UILabel!
+    @IBOutlet weak var date6: UILabel!
+    @IBOutlet weak var date7: UILabel!
+    @IBOutlet weak var weekButton: UIButton!
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        weekButton.isHidden = true
+        date1.isHidden = true
+        date2.isHidden = true
+        date3.isHidden = true
+        date4.isHidden = true
+        date5.isHidden = true
+        date6.isHidden = true
+        date7.isHidden = true
         button.isEnabled = false
-        Dates.getDatesBetweenInterval(Dates.dateFromString("2010-07-17"), Date()) { (finished, datesArray) in
+        let finalURL = baseURL + (weekAgoDate?.formattedDate())! + midURL + Date().formattedDate()
+        Dates.getDatesBetweenInterval(weekAgoDate!, Date()) { (finished, datesArray) in
             if finished {
                 numberOfDates = datesArray.count
                 arrayOfDates = datesArray
-                let finalURL = baseURL + Date().formattedDate()
+                print(datesArray)
                 
                 getBitcoinDateArrayData(url: finalURL, dates: datesArray) { (isSuccess, datesValueArray) in
                     if isSuccess {
-                        self.valuesArray = datesValueArray
-                        print(self.valuesArray)
-                        func tenth(_ num: Double) -> Double {
-                            let oneTenth = self.valuesArray.max()! * 0.1
-                            let myTenth = oneTenth * num
-                            return myTenth
+                        getBitcoinCurrentData { (isCompleted, currentPrice) in
+                            if isCompleted {
+                                self.valuesArray = datesValueArray
+                                print(self.valuesArray)
+                                
+                                self.valuesArray[self.valuesArray.count - 1] = currentPrice
+                                print(self.valuesArray)
+                                self.quarter1 = self.valuesArray.max()! * 0.25
+                                self.half = self.valuesArray.max()! * 0.5
+                                self.quarter3 = self.valuesArray.max()! * 0.75
+                                self.whole = self.valuesArray.max()!
+                                print(self.whole)
+                                
+                                self.button.isEnabled = true
+                                self.makeGraphView(graph: self.myGraph)
+                                self.view.bringSubview(toFront: self.myGraph)
+                                self.view.bringSubview(toFront: self.stack)
+                                
+                                self.date1.text = self.arrayOfDates[0].monthDay()
+                                self.date2.text = self.arrayOfDates[1].monthDay()
+                                self.date3.text = self.arrayOfDates[2].monthDay()
+                                self.date4.text = self.arrayOfDates[3].monthDay()
+                                self.date5.text = self.arrayOfDates[4].monthDay()
+                                self.date6.text = self.arrayOfDates[5].monthDay()
+                                self.date7.text = self.arrayOfDates[6].monthDay()
+                                
+                                self.date1.isHidden = false
+                                self.date2.isHidden = false
+                                self.date3.isHidden = false
+                                self.date4.isHidden = false
+                                self.date5.isHidden = false
+                                self.date6.isHidden = false
+                                self.date7.isHidden = false
+                            }
+                            
                         }
-                        self.line0 = 0
-                        self.line1 = tenth(1)
-                        self.line2 = tenth(2)
-                        self.line3 = tenth(3)
-                        self.line4 = tenth(4)
-                        self.line5 = tenth(5)
-                        self.line6 = tenth(6)
-                        self.line7 = tenth(7)
-                        self.line8 = tenth(8)
-                        self.line9 = tenth(9)
-                        self.line10 = tenth(10)
-                        self.referenceLinesArray = [self.line0, self.line1, self.line2, self.line3, self.line4, self.line5, self.line6, self.line7, self.line8, self.line9, self.line10]
-                        self.button.isEnabled = true
-                    self.makeGraphView(graph: self.myGraph)
                         
                     } else {
                         print("Graph failed to load data")
                     }
                 }
                 
+                /*
+ 
+                 getBitcoinCurrentData{ (isCompleted, currentPrice) in
+                 if isCompleted {
+                 self.priceNow = currentPrice
+                 print(currentPrice)
+                 }
+                 
+                 }
+
+                 */
+                
+            
+                
             }
+            
         }
-//        let currentDate : String = Date().formattedDate()
-//        let finalURL = baseURL + currentDate
-//        let graphView = ScrollableGraphView(frame: myGraph.frame, dataSource: self as ScrollableGraphViewDataSource)
-//        ///   var plotPoints : [Double] = []
-//        Dates.printDatesBetweenInterval((Dates.dateFromString("2010-07-18")), Date()) { (finished, datesArray) in
-//            if finished {
-//                getBitcoinDateArrayData(url: finalURL, dates: datesArray) { (isSuccessful, datesValueArray) in
-//                    if isSuccessful {
-//
-//
-//                        for currentPlot in 1...datesArray.count {
-//                            let linePlot = LinePlot(identifier: "\(datesArray[currentPlot - 1])") // Identifier should be unique for each plot.
-//                            let referenceLines = ReferenceLines()
-//
-//                            graphView.addPlot(plot: linePlot)
-//                            graphView.addReferenceLines(referenceLines: referenceLines)
-//
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        view.addSubview(graphView)
+        
+        
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    func finalGraphInitialization(datesValueArray: [Double]) {
+        getBitcoinCurrentData{ (isCompleted, currentPrice) in
+            if isCompleted {
+                self.valuesArray = datesValueArray
+                self.valuesArray.append(currentPrice)
+                print(self.valuesArray)
+                self.quarter1 = self.valuesArray.max()! * 0.25
+                self.half = self.valuesArray.max()! * 0.5
+                self.quarter3 = self.valuesArray.max()! * 0.75
+                self.whole = self.valuesArray.max()!
+                self.button.isEnabled = true
+                self.makeGraphView(graph: self.myGraph)
+            } else {
+                print("Graph failed to load data")
+            }
+            
+        }
+    }
     /*
      Dates.printDatesBetweenInterval((Dates.dateFromString("2010-07-18")), Date()) { (finished, datesArray) in
      if finished {
@@ -165,6 +228,7 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
          }
  */
 //        return randomNumbers[pointIndex]   // [Int(arc4random_uniform(50))]
+        
         return valuesArray[pointIndex]
         
     }
@@ -179,8 +243,15 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
 //        let retValue : String = "\(returnArray[pointIndex - 1])"
 //        return retValue
 //        let mintString = NSAttributedString(string: "\(String(pointIndex))", attributes: [NSAttributedStringKey.foregroundColor : UIColor.mint])
-       return arrayOfDates[pointIndex].monthYR()
+    //    let cutoffPreventionSpace = "           " // This spacing makes sure the last label isn't cut off
+        
+//        if pointIndex == 0 {
+//            return "     "
+//        } else {
+// *      //  return arrayOfDates[pointIndex].monthDay() //+ cutoffPreventionSpace
 //        return "\(String(pointIndex))"
+//        }
+        return " "
     }
     
     func numberOfPoints() -> Int {
@@ -192,7 +263,7 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
 //        return retValue
         // return datesValueArray.count
 //        return randomNumbers.count
-        return numberOfDates - 1
+        return numberOfDates
     }
     
 
@@ -301,7 +372,9 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
 //        graphView.addPlot(plot: linePlot)
 //        graphView.addReferenceLines(referenceLines: referenceLines)
     }
+    
     // Mark: - Make Graph Functions
+    
     func makeGraphView(graph: ScrollableGraphView!) {
         let graphView = ScrollableGraphView(frame: graph.frame, dataSource: self as ScrollableGraphViewDataSource)
         
@@ -313,7 +386,8 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
         setupDotPlot(dotPlot: dotPlot, dataPointColour: .white)
         setupReferenceLines(referenceLines: referenceLines, dataPointColour: .white, referenceLineColour: .strawberry)
         setGraphViewAttributes(graphView: graphView)
-        graphView.bouncesZoom = true
+        graphView.isUserInteractionEnabled = false
+       
         finalizeGraph(graphView: graphView, linePlot: linePlot, dotPlot: dotPlot, referenceLines: referenceLines)
     }
     
@@ -338,43 +412,47 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
     
     func setupReferenceLines(referenceLines: ReferenceLines, dataPointColour: UIColor, referenceLineColour: UIColor) {
         
-        referenceLines.referenceLineColor = UIColor.strawberry.withAlphaComponent(0.2) // Colour and opacity of reference lines
-        referenceLines.dataPointLabelColor = UIColor.white // Colour of x-axis labels
+        referenceLines.referenceLineColor = referenceLineColour.withAlphaComponent(0.2) // Colour and opacity of reference lines
+        referenceLines.dataPointLabelColor = dataPointColour // Colour of x-axis labels
         referenceLines.referenceLineLabelColor = referenceLineColour // Colour of y-axis labels
         referenceLines.dataPointLabelFont = UIFont(name: "Futura-Medium", size: 12) // Font of x-axis labels
-        referenceLines.referenceLineLabelFont = UIFont(name: "HelveticaNeue-Medium", size: 10)! // Font of y-axis labels
+        referenceLines.referenceLineLabelFont = UIFont(name: "HelveticaNeue-CondensedBold", size: 11)! // Font of y-axis labels
+        // HelveticaNeue-Medium
+        
         
         // To utilize referenceLines.positionType, make sure that graphView.shouldAdaptRange is false
-      //  referenceLines.positionType = ReferenceLinePositioningType.relative
-       // referenceLines.absolutePositions = referenceLinesArray//[0,0.5,1]
+        referenceLines.positionType = .absolute // If type specidied, set referenceLines.includeMinMax to false
+        referenceLines.absolutePositions = [0.0,quarter1,half,quarter3,whole]//[0,0.5,1]
+        referenceLines.positionType = .absolute
         // absolute positions can be and number that fits within your data set
         // relative positions have to be a value from 0-1 (like percents)
        
-        // referenceLines.includeMinMax = false // Show min and max reference lines? (Bool)
-        referenceLines.referenceLinePosition = .right // Position of y-axis labels
-       
-        
-        referenceLines.shouldShowLabels = true // Show y-axis labels? (Bool)
+        referenceLines.includeMinMax = false // Show min and max reference lines? (Bool)
+        referenceLines.referenceLinePosition = .left // Position of y-axis labels
+        referenceLines.referenceLineNumberStyle = NumberFormatter.Style.currency
+        referenceLines.shouldShowLabels = true // Show y-axis labels? (Bool)    *******
         referenceLines.shouldShowReferenceLines = true // Show refernce lines? (Bool)
         }
     
     func setGraphViewAttributes(graphView: ScrollableGraphView) {
         graphView.backgroundFillColor = .clear // Background colour (above)
         graphView.backgroundColor = .clear // Background colour (below)
-        graphView.rightmostPointPadding = 25// Right spring padding space // 50
-        graphView.leftmostPointPadding = 15 // Left spring padding space // 50
+        graphView.rightmostPointPadding = 0 // CGFloat(valuesArray.last!)// Right spring padding space // 25
+        graphView.leftmostPointPadding = 0 // Left spring padding space // 50
+        
+        graphView.rangeMax = whole
+        
         
         graphView.bottomMargin = 1 // Space between bottom edge of graph and x-axis
         graphView.shouldRangeAlwaysStartAtZero = true // Y-axis start at zero? (Bool)
-      //  graphView.dataPointSpacing = view.frame.size.width / CGFloat(valuesArray.count)
-        graphView.shouldAdaptRange = true // Should abide by minimum and maximum user-set values for y-axis
+        graphView.dataPointSpacing = myGraph.frame.size.width / CGFloat(valuesArray.count - 1)
+        graphView.shouldAdaptRange = false // Should abide by minimum and maximum user-set values for y-axis
         // If false, this also ensures that the y-axis values will not change while in use
         
 //        if graphView.shouldAdaptRange == true {
 //            graphView.rangeMax = value // Max value for y-axis
 //            graphView.range = value // Min value for y-axis
 //        }
-        
         graphView.shouldAnimateOnAdapt = true // Should utilize animations while using graph? (Bool)
         graphView.shouldAnimateOnStartup = true // Should animate building of graph? (Bool)
     }
@@ -408,9 +486,11 @@ extension Date {
 }
 extension UIColor {
     
-    static let mint = #colorLiteral(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1)
-    static let strawberry = #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
-    static let blackberry = #colorLiteral(red: 0.01428075787, green: 0, blue: 0.1081325635, alpha: 1)
+    static let mint = #colorLiteral(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1) // 00FA92
+    static let strawberry = #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1) // FF2F92
+    static let blackberry = #colorLiteral(red: 0.01428075787, green: 0, blue: 0.1081325635, alpha: 1) // 03001B
+    static let burntOrange = #colorLiteral(red: 0.9931957126, green: 0.3331764638, blue: 0.2069928646, alpha: 1) // FD5434
+    static let mintCompliment = #colorLiteral(red: 0.9803921569, green: 0, blue: 0.4078431373, alpha: 1) // FA0068
     
 }
 extension Double {
@@ -433,6 +513,15 @@ extension String {
     }
 }
 extension String {
+    func monthDay() -> String {
+        let date = Dates.dateFromString(self)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd"
+        let returnValue = String(formatter.string(from: date))
+        return returnValue
+    }
+}
+extension String {
     func monthYR() -> String {
       //  let space = " "
         let date = Dates.dateFromString(self)
@@ -447,4 +536,50 @@ extension String {
         return returnValue
     }
 }
+
+extension UIColor { // UIColor --> Hex String
+    var hexString: String {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        return String(
+            format: "%02X%02X%02X",
+            Int(r * 0xff),
+            Int(g * 0xff),
+            Int(b * 0xff)
+        )
+    }
+}
+extension UIColor { // Hex String --> UIColor
+    convenience init(hex: String) {
+        let scanner = Scanner(string: hex)
+        scanner.scanLocation = 0
+        
+        var rgbValue: UInt64 = 0
+        
+        scanner.scanHexInt64(&rgbValue)
+        
+        let r = (rgbValue & 0xff0000) >> 16
+        let g = (rgbValue & 0xff00) >> 8
+        let b = rgbValue & 0xff
+        
+        self.init(
+            red: CGFloat(r) / 0xff,
+            green: CGFloat(g) / 0xff,
+            blue: CGFloat(b) / 0xff, alpha: 1
+        )
+    }
+}
+
+//extension Date {
+//    func fullFormatString() -> String {
+//        let fmt = DateFormatter()
+//        fmt.dateFormat = "yyyy-MM-dd"
+//        let returnValue : String = "\(fmt.string(from: self))"
+//    }
+//}
 

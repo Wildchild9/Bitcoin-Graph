@@ -13,6 +13,9 @@
         <array key="Futura.ttc">
             <string>Futura-Medium</string>
         </array>
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
     </customFonts>
     <scenes>
         <!--View Controller-->
@@ -47,12 +50,95 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAdaptRange" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1HU-Hi-BQN">
+                                <rect key="frame" x="2" y="446" width="371" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsl-zb-15W" userLabel="Date1">
+                                        <rect key="frame" x="0.0" y="0.0" width="49.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epc-jY-tse">
+                                        <rect key="frame" x="53.5" y="0.0" width="49.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMd-7f-Av9">
+                                        <rect key="frame" x="107" y="0.0" width="49.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date 4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUD-Vv-IMH">
+                                        <rect key="frame" x="160.5" y="0.0" width="50" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date 5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9Z-SL-bhU">
+                                        <rect key="frame" x="214.5" y="0.0" width="49.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date 6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3K-8o-Tbx">
+                                        <rect key="frame" x="268" y="0.0" width="49.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date 7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGX-ez-qW1">
+                                        <rect key="frame" x="321.5" y="0.0" width="49.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="l9Z-SL-bhU" firstAttribute="top" secondItem="1HU-Hi-BQN" secondAttribute="top" id="1KL-WK-rlg"/>
+                                    <constraint firstAttribute="height" constant="25" id="1n0-p2-ZW1"/>
+                                    <constraint firstAttribute="bottom" secondItem="q3K-8o-Tbx" secondAttribute="bottom" id="B4Z-ua-Jrz"/>
+                                    <constraint firstAttribute="bottom" secondItem="MUD-Vv-IMH" secondAttribute="bottom" id="HTM-Sv-6rD"/>
+                                    <constraint firstItem="epc-jY-tse" firstAttribute="top" secondItem="1HU-Hi-BQN" secondAttribute="top" id="MLz-wP-bH1"/>
+                                    <constraint firstAttribute="bottom" secondItem="sGX-ez-qW1" secondAttribute="bottom" id="PBx-sA-Q98"/>
+                                    <constraint firstAttribute="bottom" secondItem="epc-jY-tse" secondAttribute="bottom" id="Sjt-g1-TZv"/>
+                                    <constraint firstAttribute="bottom" secondItem="dsl-zb-15W" secondAttribute="bottom" id="box-x4-LKn"/>
+                                    <constraint firstItem="YMd-7f-Av9" firstAttribute="top" secondItem="1HU-Hi-BQN" secondAttribute="top" id="cPy-Rf-Fz4"/>
+                                    <constraint firstItem="q3K-8o-Tbx" firstAttribute="top" secondItem="1HU-Hi-BQN" secondAttribute="top" id="cSh-ti-xfg"/>
+                                    <constraint firstAttribute="bottom" secondItem="l9Z-SL-bhU" secondAttribute="bottom" id="eBA-zY-XoG"/>
+                                    <constraint firstAttribute="bottom" secondItem="YMd-7f-Av9" secondAttribute="bottom" id="hpT-IT-3oe"/>
+                                    <constraint firstItem="MUD-Vv-IMH" firstAttribute="top" secondItem="1HU-Hi-BQN" secondAttribute="top" id="lak-2G-uDP"/>
+                                    <constraint firstItem="sGX-ez-qW1" firstAttribute="top" secondItem="1HU-Hi-BQN" secondAttribute="top" id="vfq-3x-P65"/>
+                                    <constraint firstItem="dsl-zb-15W" firstAttribute="top" secondItem="1HU-Hi-BQN" secondAttribute="top" id="xEu-uI-JJY"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysb-Qf-XKx">
+                                <rect key="frame" x="16" y="176" width="61" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="0.60566057480000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Week">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="7.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.011657562863579631" green="0.0" blue="0.10200284090909095" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="7u7-7f-mbq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AeB-9c-KCc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1HU-Hi-BQN" secondAttribute="trailing" constant="2" id="BDk-LU-pbY"/>
+                            <constraint firstItem="1HU-Hi-BQN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BbH-eY-hNb"/>
                             <constraint firstItem="7u7-7f-mbq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BiT-Hu-frC"/>
                             <constraint firstItem="7u7-7f-mbq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HnJ-RS-okz"/>
+                            <constraint firstItem="1HU-Hi-BQN" firstAttribute="top" secondItem="7u7-7f-mbq" secondAttribute="bottom" constant="-11" id="PCA-FN-Jz2"/>
+                            <constraint firstItem="1HU-Hi-BQN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="tKC-zm-haz"/>
                             <constraint firstAttribute="bottom" secondItem="K1p-uw-Xxc" secondAttribute="bottom" constant="70" id="tqk-TT-4Zb"/>
                             <constraint firstItem="K1p-uw-Xxc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xdU-RC-W5U"/>
                         </constraints>
@@ -60,7 +146,16 @@
                     </view>
                     <connections>
                         <outlet property="button" destination="K1p-uw-Xxc" id="arN-3p-ian"/>
+                        <outlet property="date1" destination="dsl-zb-15W" id="IYN-0c-zWE"/>
+                        <outlet property="date2" destination="epc-jY-tse" id="8hy-yN-cPU"/>
+                        <outlet property="date3" destination="YMd-7f-Av9" id="tVx-wd-s6c"/>
+                        <outlet property="date4" destination="MUD-Vv-IMH" id="dps-ad-Kxz"/>
+                        <outlet property="date5" destination="l9Z-SL-bhU" id="EqG-HA-OkQ"/>
+                        <outlet property="date6" destination="q3K-8o-Tbx" id="1Ay-e2-785"/>
+                        <outlet property="date7" destination="sGX-ez-qW1" id="vnd-DZ-leE"/>
                         <outlet property="myGraph" destination="7u7-7f-mbq" id="mdP-uz-zir"/>
+                        <outlet property="stack" destination="1HU-Hi-BQN" id="uiO-S5-dWy"/>
+                        <outlet property="weekButton" destination="ysb-Qf-XKx" id="rFC-fW-eeZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

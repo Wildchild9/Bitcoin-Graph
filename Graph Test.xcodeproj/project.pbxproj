@@ -84,10 +84,10 @@
 			children = (
 				C23434F52033D6780039894B /* AppDelegate.swift */,
 				C23434F72033D6780039894B /* ViewController.swift */,
+				C23434FC2033D6780039894B /* Assets.xcassets */,
 				C2C1D6802033DC1A0079B744 /* BitcoinDateData.swift */,
 				C2C1D67E2033DAE10079B744 /* Dates.swift */,
 				C23434F92033D6780039894B /* Main.storyboard */,
-				C23434FC2033D6780039894B /* Assets.xcassets */,
 				C23434FE2033D6780039894B /* LaunchScreen.storyboard */,
 				C23435012033D6780039894B /* Info.plist */,
 			);
