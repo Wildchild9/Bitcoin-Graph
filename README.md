@@ -3,6 +3,7 @@
 This app finds takes the current bitcoin price and the bitcoin prices from the past seven days and composes them into an elegant chart. The data is presented in USD.
 
 ## Demo
+<img width="475" src ="https://user-images.githubusercontent.com/35314567/36349149-4a130c36-144e-11e8-88fd-9ea2ae4cbe8e.gif"/>
 <img width="565" alt="data for past week" src="https://user-images.githubusercontent.com/35314567/36348350-9ff53a60-143b-11e8-99d5-ea952eaf5c5e.png">
 
 ## Color Scheme
