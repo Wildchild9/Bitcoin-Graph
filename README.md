@@ -13,6 +13,7 @@ This app finds takes the current bitcoin price and the bitcoin prices from the p
 ### Alternative Colors:
 - ![#FD5434](https://placehold.it/15/FD5434/000000?text=+)  Burnt Orange  `#FD5434 (253,84,52)`
 - ![#FA0068](https://placehold.it/15/FA0068/000000?text=+)  Mint Compliment  `#FA0068 (250,0,104)`
+
 ## Notices
 ### Pods Used:
  1. [Alamofire](https://cocoapods.org/pods/Alamofire)
