@@ -7,13 +7,13 @@ This app finds takes the current bitcoin price and the bitcoin prices from the p
 
 ## Color Scheme
 ### Main Colors:
-- ![#00FA92](https://placehold.it/15/00FA92/000000?text=+)  Mint  `#00FA92 (0,250,146)`
-- ![#FF2F92](https://placehold.it/15/FF2F92/000000?text=+)  Strawberry  `#FF2F92 (255,47,146)`
-- ![#03001B](https://placehold.it/15/03001B/000000?text=+)  Blackberry  `#03001B (3,0,27)`
-- ![#FFFFFF](https://placehold.it/15/FFFFFF/000000?text=+)  White  `#FFFFFF (255,255,255)`
+- ![#00FA92](https://placehold.it/15/00FA92/000000?text=+)  Mint  `#00FA92` `(0,250,146)`
+- ![#FF2F92](https://placehold.it/15/FF2F92/000000?text=+)  Strawberry  `#FF2F92` `(255,47,146)`
+- ![#03001B](https://placehold.it/15/03001B/000000?text=+)  Blackberry  `#03001B` `(3,0,27)`
+- ![#FFFFFF](https://placehold.it/15/FFFFFF/000000?text=+)  White  `#FFFFFF` `(255,255,255)`
 ### Alternative Colors:
-- ![#FD5434](https://placehold.it/15/FD5434/000000?text=+)  Burnt Orange  `#FD5434 (253,84,52)`
-- ![#FA0068](https://placehold.it/15/FA0068/000000?text=+)  Mint Compliment  `#FA0068 (250,0,104)`
+- ![#FD5434](https://placehold.it/15/FD5434/000000?text=+)  Burnt Orange  `#FD5434` `(253,84,52)`
+- ![#FA0068](https://placehold.it/15/FA0068/000000?text=+)  Mint Compliment  `#FA0068` `(250,0,104)`
 
 ## Notices
 ### Pods Used:
