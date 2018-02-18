@@ -15,13 +15,13 @@ This app finds takes the current bitcoin price and the bitcoin prices from the p
 - ![#FA0068](https://placehold.it/15/FA0068/000000?text=+)  Mint Compliment  `#FA0068 (250,0,104)`
 ## Notices
 ### Pods Used:
-1. Alamofire (https://cocoapods.org/pods/Alamofire)
-2. SwiftyJSON (https://cocoapods.org/pods/SwiftyJSON)
-3. ScrollableGraphView (https://cocoapods.org/pods/ScrollableGraphView)
+ 1. [Alamofire](https://cocoapods.org/pods/Alamofire)
+2. [SwiftyJSON](https://cocoapods.org/pods/SwiftyJSON)
+3. [ScrollableGraphView](https://cocoapods.org/pods/ScrollableGraphView)
 
 ### APIs Used:
-1. Bitcoin Average API (https://apiv2.bitcoinaverage.com)
-2. Coindesk API (https://www.coindesk.com/api/)
+1. [Bitcoin Average API](https://apiv2.bitcoinaverage.com)
+2. [Coindesk API](https://www.coindesk.com/api/)
 
 
 ## License:
