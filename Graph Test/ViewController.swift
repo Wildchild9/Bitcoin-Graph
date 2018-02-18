@@ -78,19 +78,21 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
         let finalURL = baseURL + (weekAgoDate?.formattedDate())! + midURL + (yesterday?.formattedDate())!
         Dates.getDatesBetweenInterval(weekAgoDate!, yesterday!) { (finished, datesArray) in
             if finished {
-                numberOfDates = datesArray.count
+                numberOfDates = datesArray.count + 1
                 arrayOfDates = datesArray
+                arrayOfDates.append(Date().formattedDate())
                 print(datesArray)
                 
                 getBitcoinDateArrayData(url: finalURL, dates: datesArray) { (isSuccess, datesValueArray) in
                     if isSuccess {
                         getBitcoinCurrentData { (isCompleted, currentPrice) in
                             if isCompleted {
-                                self.valuesArray.append(currentPrice)
-                                self.valuesArray = datesValueArray
-                                print(self.valuesArray)
                                 
-                            //    self.valuesArray[self.valuesArray.count - 1] = currentPrice
+                                self.valuesArray = datesValueArray
+                                
+                                print(self.valuesArray)
+                                self.valuesArray.append(currentPrice)
+                                //    self.valuesArray[self.valuesArray.count - 1] = currentPrice
                                 print(self.valuesArray)
                                 self.quarter1 = self.valuesArray.max()! * 0.25
                                 self.half = self.valuesArray.max()! * 0.5
@@ -100,12 +102,30 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
                                 
                                 self.button.isEnabled = true
                                 self.makeGraphView(graph: self.myGraph)
+                                
                                 self.view.bringSubview(toFront: self.myGraph)
                                 self.view.bringSubview(toFront: self.stack)
+                                
+                                self.date1.text = self.arrayOfDates[0].monthDay()
+                                self.date2.text = self.arrayOfDates[1].monthDay()
+                                self.date3.text = self.arrayOfDates[2].monthDay()
+                                self.date4.text = self.arrayOfDates[3].monthDay()
+                                self.date5.text = self.arrayOfDates[4].monthDay()
+                                self.date6.text = self.arrayOfDates[5].monthDay()
+                                self.date7.text = self.arrayOfDates[6].monthDay()
+                                
+                                self.date1.isHidden = false
+                                self.date2.isHidden = false
+                                self.date3.isHidden = false
+                                self.date4.isHidden = false
+                                self.date5.isHidden = false
+                                self.date6.isHidden = false
+                                self.date7.isHidden = false
                                 
                             } else {
                                 print("Graph failed to load data")
                             }
+                            
                             
                         }
                         
@@ -135,6 +155,7 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
         
         
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -217,6 +238,7 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
  */
 //        return randomNumbers[pointIndex]   // [Int(arc4random_uniform(50))]
         
+        
         return valuesArray[pointIndex]
         
     }
@@ -239,6 +261,8 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
 // *      //  return arrayOfDates[pointIndex].monthDay() //+ cutoffPreventionSpace
 //        return "\(String(pointIndex))"
 //        }
+      
+        
         return " "
     }
     
@@ -428,7 +452,7 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
         graphView.rightmostPointPadding = 0 // CGFloat(valuesArray.last!)// Right spring padding space // 25
         graphView.leftmostPointPadding = 0 // Left spring padding space // 50
         
-        graphView.rangeMax = whole
+        graphView.rangeMax = whole // Sets the maximum value for the y-axis (essential to have, if deleted or commented out graph will most likely be incorrect)
         
         
         graphView.bottomMargin = 1 // Space between bottom edge of graph and x-axis
