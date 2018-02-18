@@ -36,7 +36,7 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
     var line9 : Double = 0
     var line10 : Double = 0
     var referenceLinesArray : [Double] = []
-    let yesterday = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+    let yesterday = Calendar.current.date(byAdding: .day, value: 0, to: Date())
     let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date())
     let weekAgoDate = Calendar.current.date(byAdding: .day, value: -6, to: Date())
     var priceNow : Double = 0
@@ -75,8 +75,8 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
         date6.isHidden = true
         date7.isHidden = true
         button.isEnabled = false
-        let finalURL = baseURL + (weekAgoDate?.formattedDate())! + midURL + Date().formattedDate()
-        Dates.getDatesBetweenInterval(weekAgoDate!, Date()) { (finished, datesArray) in
+        let finalURL = baseURL + (weekAgoDate?.formattedDate())! + midURL + (yesterday?.formattedDate())!
+        Dates.getDatesBetweenInterval(weekAgoDate!, yesterday!) { (finished, datesArray) in
             if finished {
                 numberOfDates = datesArray.count
                 arrayOfDates = datesArray
@@ -86,10 +86,11 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
                     if isSuccess {
                         getBitcoinCurrentData { (isCompleted, currentPrice) in
                             if isCompleted {
+                                self.valuesArray.append(currentPrice)
                                 self.valuesArray = datesValueArray
                                 print(self.valuesArray)
                                 
-                                self.valuesArray[self.valuesArray.count - 1] = currentPrice
+                            //    self.valuesArray[self.valuesArray.count - 1] = currentPrice
                                 print(self.valuesArray)
                                 self.quarter1 = self.valuesArray.max()! * 0.25
                                 self.half = self.valuesArray.max()! * 0.5
@@ -102,21 +103,8 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
                                 self.view.bringSubview(toFront: self.myGraph)
                                 self.view.bringSubview(toFront: self.stack)
                                 
-                                self.date1.text = self.arrayOfDates[0].monthDay()
-                                self.date2.text = self.arrayOfDates[1].monthDay()
-                                self.date3.text = self.arrayOfDates[2].monthDay()
-                                self.date4.text = self.arrayOfDates[3].monthDay()
-                                self.date5.text = self.arrayOfDates[4].monthDay()
-                                self.date6.text = self.arrayOfDates[5].monthDay()
-                                self.date7.text = self.arrayOfDates[6].monthDay()
-                                
-                                self.date1.isHidden = false
-                                self.date2.isHidden = false
-                                self.date3.isHidden = false
-                                self.date4.isHidden = false
-                                self.date5.isHidden = false
-                                self.date6.isHidden = false
-                                self.date7.isHidden = false
+                            } else {
+                                print("Graph failed to load data")
                             }
                             
                         }
