@@ -83,15 +83,47 @@
 			isa = PBXGroup;
 			children = (
 				C23434F52033D6780039894B /* AppDelegate.swift */,
-				C23434F72033D6780039894B /* ViewController.swift */,
-				C23434FC2033D6780039894B /* Assets.xcassets */,
-				C2C1D6802033DC1A0079B744 /* BitcoinDateData.swift */,
-				C2C1D67E2033DAE10079B744 /* Dates.swift */,
-				C23434F92033D6780039894B /* Main.storyboard */,
-				C23434FE2033D6780039894B /* LaunchScreen.storyboard */,
-				C23435012033D6780039894B /* Info.plist */,
+				C2C2C678203C072F0091365A /* Controller */,
+				C2C2C677203C072B0091365A /* Model */,
+				C2C2C676203C07280091365A /* View */,
+				C2C2C675203C07240091365A /* Supporting Files */,
 			);
 			path = "Graph Test";
+			sourceTree = "<group>";
+		};
+		C2C2C675203C07240091365A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C23435012033D6780039894B /* Info.plist */,
+				C23434FC2033D6780039894B /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2C2C676203C07280091365A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C23434FE2033D6780039894B /* LaunchScreen.storyboard */,
+				C23434F92033D6780039894B /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C2C2C677203C072B0091365A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2C1D6802033DC1A0079B744 /* BitcoinDateData.swift */,
+				C2C1D67E2033DAE10079B744 /* Dates.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C2C2C678203C072F0091365A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C23434F72033D6780039894B /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,7 +408,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JPFSXG2FT6;
-				INFOPLIST_FILE = "Graph Test/Info.plist";
+				INFOPLIST_FILE = "Graph Test/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.noahwilder.Graph-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -393,7 +425,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JPFSXG2FT6;
-				INFOPLIST_FILE = "Graph Test/Info.plist";
+				INFOPLIST_FILE = "Graph Test/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.noahwilder.Graph-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
