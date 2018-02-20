@@ -428,7 +428,7 @@ class ViewController: UIViewController, ScrollableGraphViewDataSource {
         referenceLines.dataPointLabelColor = dataPointColour // Colour of x-axis labels
         referenceLines.referenceLineLabelColor = referenceLineColour // Colour of y-axis labels
         referenceLines.dataPointLabelFont = UIFont(name: "Futura-Medium", size: 12) // Font of x-axis labels
-        referenceLines.referenceLineLabelFont = UIFont(name: "HelveticaNeue-CondensedBold", size: 11)! // Font of y-axis labels
+        referenceLines.referenceLineLabelFont = UIFont(name: "HelveticaNeue-CondensedBold", size: 12)! // Font of y-axis labels
         // HelveticaNeue-Medium
         
         
